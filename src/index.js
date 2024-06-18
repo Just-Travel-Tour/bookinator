@@ -2,6 +2,7 @@
 import { Client, Events, Partials, GatewayIntentBits } from "discord.js";
 import { buildCommands } from "./commands/buildCommands.js";
 import { onInteraction, onReady } from "./events/index.js";
+import "./keep_alive.js"
 
 const client = new Client({
   intents: [
