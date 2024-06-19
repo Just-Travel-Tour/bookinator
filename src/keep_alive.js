@@ -9,5 +9,5 @@ const requestHandler = (req, res) => {
 const server = http.createServer(requestHandler);
 
 server.listen(port, () => {
-  console.log(`Server is running`);
+  console.log(`Bookinator Server is running`);
 });
