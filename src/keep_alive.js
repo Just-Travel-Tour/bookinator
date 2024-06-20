@@ -1,8 +1,14 @@
-import express from 'express'
-const app = express()
+import http from 'http'
+const port = 8080;
 
-app.get('/health_check', function (req, res) {
-  res.send("Bookinator is alive")
-})
+const requestHandler = (req, res) => {
+  console.log("health_check")
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Bookinator is alive!');
+}
 
-app.listen(8080)
+const server = http.createServer(requestHandler);
+
+server.listen(port, () => {
+  console.log(`Bookinator Server is running`);
+});
