@@ -1,7 +1,7 @@
 import express from 'express'
 const app = express()
 
-app.get('/', function (req, res) {
+app.get('/health_check', function (req, res) {
   res.send("Bookinator is alive")
 })
 
