@@ -7,6 +7,7 @@ export function getFields(fields, state, rest = {}) {
   const startTime = fields.get("startTime")?.value || null
   const endTime = fields.get("endTime")?.value || null
   const taskTester = fields.get("taskTester")?.value || null
+  const reason = fields.get("reason")?.value || null
 
   const taskTimeStart = `${date} ${normalizeHourView(startTime, true)}`
   const taskTimeEnd = normalizeHourView(endTime, false)
@@ -16,6 +17,7 @@ export function getFields(fields, state, rest = {}) {
     taskTimeStart,
     taskTimeEnd,
     ...(taskTester && { taskTester }),
+    ...(reason && { reason }),
     ...rest,
     ...getState(state)
   }

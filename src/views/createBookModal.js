@@ -28,14 +28,14 @@ export function createBookModal() {
     new ActionRowBuilder().addComponents(
       new TextInputBuilder()
         .setCustomId('startTime')
-        .setLabel('Expectativa de início [- = Em fila]')
+        .setLabel('Expectativa de início (- = Em fila)')
         .setPlaceholder('HH:MM | -')
         .setStyle(TextInputStyle.Short)
     ),
     new ActionRowBuilder().addComponents(
       new TextInputBuilder()
         .setCustomId('endTime')
-        .setLabel('Expectativa de término [- = Nenhuma]')
+        .setLabel('Expectativa de término (- = Nenhuma)')
         .setPlaceholder('HH:MM | -')
         .setStyle(TextInputStyle.Short)
     ),
@@ -43,7 +43,7 @@ export function createBookModal() {
       new TextInputBuilder()
         .setCustomId('taskTester')
         .setLabel('Quem irá testar? (+ onde irá testar)')
-        .setPlaceholder('[Tech | Produto | Usuário] + [ V1 | V2 ]')
+        .setPlaceholder('(Tech | Produto | Usuário) + ( V1 | V2 )')
         .setStyle(TextInputStyle.Short)
     )
   );

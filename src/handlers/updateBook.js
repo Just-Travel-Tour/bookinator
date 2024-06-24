@@ -12,7 +12,8 @@ export async function updateEmbedHandler(interaction, updateData) {
       taskTimeEnd: updateData?.taskTimeEnd || prevEmbedData.fields.find(field => field.name === "Expectativa de término").value,
       taskTester: updateData?.taskTester || prevEmbedData.fields.find(field => field.name === "Quem irá utilizar o ambiente").value,
       stateLabel: updateData?.stateLabel || prevEmbedData.fields.find(field => field.name === "Estado").value,
-      embedColor: updateData?.embedColor || prevEmbedData.color
+      embedColor: updateData?.embedColor || prevEmbedData.color,
+      reason: updateData?.reason || prevEmbedData.fields.find(field => field.name === "Motivo de reagendamento")?.value || undefined,
     };
 
     const embed = createEmbed({

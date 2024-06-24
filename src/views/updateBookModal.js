@@ -20,15 +20,23 @@ export function updateBookModal() {
     new ActionRowBuilder().addComponents(
       new TextInputBuilder()
         .setCustomId('startTime')
-        .setLabel('Expectativa de início [- = Em fila]')
+        .setLabel('Expectativa de início (- = Em fila)')
         .setPlaceholder('HH:MM | -')
         .setStyle(TextInputStyle.Short)
     ),
     new ActionRowBuilder().addComponents(
       new TextInputBuilder()
         .setCustomId('endTime')
-        .setLabel('Expectativa de término [- = Nenhuma]')
+        .setLabel('Expectativa de término (- = Nenhuma)')
         .setPlaceholder('HH:MM | -')
+        .setStyle(TextInputStyle.Short)
+    ),
+    new ActionRowBuilder().addComponents(
+      new TextInputBuilder()
+        .setCustomId('reason')
+        .setLabel('Justificativa')
+        .setPlaceholder('Motivo para o reagendamento')
+        .setRequired(false)
         .setStyle(TextInputStyle.Short)
     ),
   );

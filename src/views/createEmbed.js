@@ -8,7 +8,8 @@ export function createEmbed({
   modifiedBy,
   modifiedByIcon,
   stateLabel,
-  embedColor
+  embedColor,
+  reason
 }) {
   const embed = new EmbedBuilder()
     .setTitle("Testes em ambiente de homol")
@@ -21,6 +22,12 @@ export function createEmbed({
       { name: "Expectativa de término", value: taskTimeEnd, inline: true },
       { name: "Quem irá utilizar o ambiente", value: taskTester, inline: false }
     );
+
+  if (reason) {
+    embed.addFields(
+      { name: "Motivo de reagendamento", value: reason, inline: false }
+    )
+  }
 
   if (modifiedBy) {
     embed.setFooter({ text: `Modificado por: ${modifiedBy}`, iconURL: modifiedByIcon });
