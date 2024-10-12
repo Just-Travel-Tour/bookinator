@@ -4,8 +4,8 @@ import { getState } from "./states.js";
 export function getFields(fields, state, rest = {}) {
   const taskCode = fields.get("taskCode")?.value || null
   const date = fields.get("date")?.value || null
-  const startTime = fields.get("startTime")?.value || null
-  const endTime = fields.get("endTime")?.value || null
+  const startTime = fields.get("startTime")?.value || "-"
+  const endTime = fields.get("endTime")?.value || "-"
   const taskTester = fields.get("taskTester")?.value || null
   const reason = fields.get("reason")?.value || null
 

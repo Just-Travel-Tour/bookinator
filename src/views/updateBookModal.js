@@ -1,5 +1,5 @@
 import { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from "discord.js";
-import { getCurrentDate } from '../utils/index.js'
+import { getCurrentDate } from '../utils/index.js';
 
 export function updateBookModal() {
   const currentDate = getCurrentDate()
@@ -15,6 +15,7 @@ export function updateBookModal() {
         .setLabel('Data')
         .setPlaceholder('DD/MM/AAAA')
         .setValue(currentDate)
+        .setRequired(false)
         .setStyle(TextInputStyle.Short)
     ),
     new ActionRowBuilder().addComponents(
@@ -22,6 +23,7 @@ export function updateBookModal() {
         .setCustomId('startTime')
         .setLabel('Expectativa de início (- = Em fila)')
         .setPlaceholder('HH:MM | -')
+        .setRequired(false)
         .setStyle(TextInputStyle.Short)
     ),
     new ActionRowBuilder().addComponents(
@@ -29,6 +31,7 @@ export function updateBookModal() {
         .setCustomId('endTime')
         .setLabel('Expectativa de término (- = Nenhuma)')
         .setPlaceholder('HH:MM | -')
+        .setRequired(false)
         .setStyle(TextInputStyle.Short)
     ),
     new ActionRowBuilder().addComponents(

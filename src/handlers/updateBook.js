@@ -14,6 +14,7 @@ export async function updateEmbedHandler(interaction, updateData) {
       stateLabel: updateData?.stateLabel || prevEmbedData.fields.find(field => field.name === "Estado").value,
       embedColor: updateData?.embedColor || prevEmbedData.color,
       reason: updateData?.reason || prevEmbedData.fields.find(field => field.name === "Motivo de reagendamento")?.value || undefined,
+      link: prevEmbedData.fields.find(field => field.name === "Link(s) da atividade")?.value || '',
     };
 
     const embed = createEmbed({
