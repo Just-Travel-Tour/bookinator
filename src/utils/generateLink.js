@@ -1,8 +1,9 @@
 const linkPrefix = process.env.TASK_LINK_PREFIX;
-const projectPrefixes = process.env.PROJECT_PREFIXES.split(',');
+const projectPrefixes = process.env.PROJECT_PREFIXES
 
 export function generateTaskLink(description) {
-  const regex = new RegExp(`\\b(${projectPrefixes.join('|')})-\\d+\\b`, 'g');
+  const prefixies = projectPrefixes?.split(',');
+  const regex = new RegExp(`\\b(${prefixies.join('|')})-\\d+\\b`, 'g');
   const matches = description.match(regex);
 
   if (matches) {
