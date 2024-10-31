@@ -13,5 +13,5 @@ export async function onButtonInteraction(interaction) {
     await interaction.showModal(updateBookModal());
   }
 
-  await doneUsageReply(interaction);
+  // await doneUsageReply(interaction);
 }

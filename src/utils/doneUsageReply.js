@@ -9,12 +9,8 @@ export async function doneUsageReply(interaction) {
     oldState === "🔴 Em teste" &&
     (newStateId === "complete_test" || newStateId === "reschedule")
   ) {
-    // await interaction.channel.send(
-    //   `📢 @Tecnologia, a atividade "${taskCode}" saiu de homologação`
-    // );
-    await interaction.reply({
-      content: `📢 @Tecnologia, a atividade "${taskCode}" saiu de homologação`,
-      ephemeral: true
-    });
+    await interaction.channel.send(
+      `📢 @Tecnologia, a atividade "${taskCode}" saiu de homologação`
+    );
   }
 }
