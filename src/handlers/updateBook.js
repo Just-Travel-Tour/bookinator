@@ -26,7 +26,6 @@ export async function updateEmbedHandler(interaction, updateData) {
     const components = updateData.isFinished ? [] : [createButtons()];
 
     await interaction.update({ embeds: [embed], components });
-
   } catch (error) {
     console.error('Erro ao atualizar o embed:', error);
   }
