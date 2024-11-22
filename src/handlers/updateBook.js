@@ -10,40 +10,46 @@ export async function updateEmbedHandler(interaction, updateData) {
 
     const prevEmbedData = prevEmbed.toJSON();
 
+    function findDataFromField(fieldName, title) {
+      return (
+        updateData[fieldName] ||
+        prevEmbedData.fields.find((field) => field.name === title).value
+      );
+    }
+
     const updatedFields = {
       taskCode:
         updateData?.taskCode ||
         prevEmbedData.title.replace(embedTitlePrefix, ""),
-      taskTimeStart:
-        updateData?.taskTimeStart ||
-        prevEmbedData.fields.find(
-          (field) => field.name === "Expectativa de início"
-        ).value,
-      taskTimeEnd:
-        updateData?.taskTimeEnd ||
-        prevEmbedData.fields.find(
-          (field) => field.name === "Expectativa de término"
-        ).value,
-      taskTester:
-        updateData?.taskTester ||
-        prevEmbedData.fields.find(
-          (field) => field.name === "Quem irá utilizar o ambiente"
-        ).value,
-      stateLabel:
-        updateData?.stateLabel ||
-        prevEmbedData.fields.find((field) => field.name === "Estado").value,
+      taskTimeStart: findDataFromField(
+        "taskTimeStart",
+        "Expectativa de início"
+      ),
+      taskTimeEnd: findDataFromField("taskTimeEnd", "Expectativa de término"),
+      taskTester: findDataFromField(
+        "taskTester",
+        "Quem irá utilizar o ambiente"
+      ),
+      stateLabel: findDataFromField("stateLabel", "Estado"),
       embedColor: updateData?.embedColor || prevEmbedData.color,
-      reason:
-        updateData?.reason ||
-        prevEmbedData.fields.find(
-          (field) => field.name === "Motivo de reagendamento"
-        )?.value ||
-        undefined,
-      link:
-        prevEmbedData.fields.find(
-          (field) => field.name === "Link(s) da atividade"
-        )?.value || "",
+      link: findDataFromField("link", "Link(s) da atividade"),
+      environment: findDataFromField("environment", "Ambiente"),
     };
+
+    // get reason from footer if it has one
+
+    if (
+      updateData?.reason ||
+      prevEmbedData.footer.text.includes("Motivo de reagendamento: ")
+    ) {
+      const reason =
+        updateData?.reason ||
+        prevEmbedData.footer.text
+          .replace("Motivo de reagendamento: ", "")
+          .split("\n")[0];
+
+      updatedFields.reason = reason;
+    }
 
     const embed = createEmbed({
       ...updatedFields,

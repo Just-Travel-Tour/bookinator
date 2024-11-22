@@ -1,5 +1,6 @@
 import { EmbedBuilder } from "discord.js";
 import { generateTaskLink } from "../utils/generateLink.js";
+import { environmentToEmoji } from "../utils/environmentToEmoji.js";
 
 export const embedTitlePrefix = "Teste Homol: ";
 const emptyField = { name: "\t", value: "\t" };
@@ -15,6 +16,7 @@ export function createEmbed({
   embedColor,
   reason,
   link = "",
+  environment = "",
 }) {
   const embed = new EmbedBuilder()
     .setTitle(embedTitlePrefix + taskCode)
@@ -28,6 +30,12 @@ export function createEmbed({
 
   embed.addFields({ name: "Estado", value: stateLabel, inline: true });
 
+  embed.addFields({
+    name: "Ambiente",
+    value: environmentToEmoji(environment),
+    inline: true,
+  });
+
   if (taskLink) {
     embed.addFields({
       name: "Link(s) da atividade",
@@ -39,7 +47,8 @@ export function createEmbed({
   embed.addFields(
     emptyField,
     { name: "Expectativa de início", value: taskTimeStart, inline: true },
-    { name: "Expectativa de término", value: taskTimeEnd, inline: true }
+    { name: "Expectativa de término", value: taskTimeEnd, inline: true },
+    emptyField
   );
 
   embed.addFields({
@@ -48,17 +57,19 @@ export function createEmbed({
     inline: false,
   });
 
+  let footerText = "";
+
   if (reason) {
-    embed.addFields({
-      name: "Motivo de reagendamento",
-      value: reason,
-      inline: false,
-    });
+    footerText += `Motivo de reagendamento: ${reason}\n`;
   }
 
   if (modifiedBy) {
+    footerText += `Modificado por: ${modifiedBy}`;
+  }
+
+  if (footerText) {
     embed.setFooter({
-      text: `Modificado por: ${modifiedBy}`,
+      text: footerText,
       iconURL: modifiedByIcon,
     });
   }
