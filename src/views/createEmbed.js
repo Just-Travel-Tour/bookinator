@@ -1,6 +1,6 @@
 import { EmbedBuilder } from "discord.js";
 import { generateTaskLink } from "../utils/generateLink.js";
-import { environmentToEmoji } from "../utils/environmentToEmoji.js";
+import { environmentToEmoji } from "../utils/environment.js";
 
 export const embedTitlePrefix = "Teste Homol: ";
 const emptyField = { name: "\t", value: "\t" };

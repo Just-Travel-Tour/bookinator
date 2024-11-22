@@ -1,3 +1,4 @@
+import { handleUpdateEnvironment } from "../utils/environment.js";
 import {
   createButtons,
   createEmbed,
@@ -33,7 +34,10 @@ export async function updateEmbedHandler(interaction, updateData) {
       stateLabel: findDataFromField("stateLabel", "Estado"),
       embedColor: updateData?.embedColor || prevEmbedData.color,
       link: findDataFromField("link", "Link(s) da atividade"),
-      environment: findDataFromField("environment", "Ambiente"),
+      environment: handleUpdateEnvironment(
+        findDataFromField("environment", "Ambiente"),
+        updateData.changeEnvironment
+      ),
     };
 
     // get reason from footer if it has one
