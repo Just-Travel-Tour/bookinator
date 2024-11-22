@@ -13,7 +13,7 @@ export async function updateEmbedHandler(interaction, updateData) {
     function findDataFromField(fieldName, title) {
       return (
         updateData[fieldName] ||
-        prevEmbedData.fields.find((field) => field.name === title).value
+        prevEmbedData.fields.find((field) => field.name === title)?.value
       );
     }
 
@@ -37,7 +37,6 @@ export async function updateEmbedHandler(interaction, updateData) {
     };
 
     // get reason from footer if it has one
-
     if (
       updateData?.reason ||
       prevEmbedData.footer.text.includes("Motivo de reagendamento: ")

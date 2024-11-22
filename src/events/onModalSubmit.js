@@ -10,7 +10,6 @@ export async function onModalSubmit(interaction) {
     modifiedByIcon: interaction.user.displayAvatarURL(),
   };
 
-  // if (interaction.customId === 'createBookModal') {
   if (interaction.customId.startsWith("createBookModal")) {
     const environment = interaction.customId.replace("createBookModal", "");
     modificationData.environment = environment;
