@@ -1,5 +1,7 @@
 import { embedTitlePrefix } from "../views/index.js";
 
+import { PermissionsBitField } from 'discord.js';
+
 export async function doneUsageReply(interaction) {
   const newStateId = interaction.customId;
   const prevEmbed = interaction.message.embeds[0];
@@ -16,8 +18,11 @@ export async function doneUsageReply(interaction) {
     oldState === "🔴 Em teste" &&
     (newStateId === "complete_test" || newStateId === "reschedule")
   ) {
-    await interaction.reply(
-      `📢 A atividade "${taskCode}" saiu de homologação ${environment}`
-    );
+    if (!interaction.channel.permissionsFor(interaction.client.user).has(PermissionsBitField.Flags.SendMessages)) {
+      console.log("O bot não tem permissão para enviar mensagens.");
+      return;
+    }
+    
+    await interaction.channel.send(`📢 A atividade "${taskCode}" saiu de homologação ${environment}`);
   }
 }
