@@ -18,11 +18,10 @@ export async function doneUsageReply(interaction) {
     oldState === "🔴 Em teste" &&
     (newStateId === "complete_test" || newStateId === "reschedule")
   ) {
-    if (!interaction.channel.permissionsFor(interaction.client.user).has(PermissionsBitField.Flags.SendMessages)) {
-      console.log("O bot não tem permissão para enviar mensagens.");
-      return;
+    try {
+      await interaction.channel.send(`📢 A atividade "${taskCode}" saiu de homologação ${environment}`);
+    } catch(error) {
+      console.error(error);
     }
-    
-    await interaction.channel.send(`📢 A atividade "${taskCode}" saiu de homologação ${environment}`);
   }
 }
