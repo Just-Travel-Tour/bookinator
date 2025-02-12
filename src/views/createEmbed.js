@@ -3,7 +3,7 @@ import { generateTaskLink } from "../utils/generateLink.js";
 import { environmentToEmoji } from "../utils/environment.js";
 
 export const embedTitlePrefix = "Teste Homol: ";
-const emptyField = { name: "\t", value: "\t" };
+// const emptyField = { name: "\t", value: "\t" };
 
 export function createEmbed({
   taskCode,
@@ -44,18 +44,16 @@ export function createEmbed({
     });
   }
 
-  embed.addFields(
-    emptyField,
-    { name: "Expectativa de início", value: taskTimeStart, inline: true },
-    { name: "Expectativa de término", value: taskTimeEnd, inline: true },
-    emptyField
-  );
-
   embed.addFields({
-    name: "Quem irá utilizar o ambiente",
+    name: "Testador & Projeto",
     value: taskTester,
     inline: false,
   });
+
+  embed.addFields(
+    { name: "Expectativa de início", value: taskTimeStart, inline: true },
+    { name: "Expectativa de término", value: taskTimeEnd, inline: true },
+  );
 
   let footerText = "";
 

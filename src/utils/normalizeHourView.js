@@ -1,9 +1,9 @@
 export function normalizeHourView(hour, isStart) {
   if (isStart && hour === '-') {
-    return "Em fila aguardando outros testes";
+    return "Em fila";
   }
   if (!isStart && hour === '-') {
-    return "Sem expectativa de hora para finalização";
+    return "Sem expectativa";
   }
   if (!isStart) {
     return hour;

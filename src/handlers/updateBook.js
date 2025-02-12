@@ -29,7 +29,7 @@ export async function updateEmbedHandler(interaction, updateData) {
       taskTimeEnd: findDataFromField("taskTimeEnd", "Expectativa de término"),
       taskTester: findDataFromField(
         "taskTester",
-        "Quem irá utilizar o ambiente"
+        "Testador & Projeto"
       ),
       stateLabel: findDataFromField("stateLabel", "Estado"),
       embedColor: updateData?.embedColor || prevEmbedData.color,
