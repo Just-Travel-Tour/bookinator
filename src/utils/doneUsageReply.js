@@ -1,7 +1,5 @@
 import { embedTitlePrefix } from "../views/index.js";
 
-import { PermissionsBitField } from 'discord.js';
-
 export async function doneUsageReply(interaction) {
   const newStateId = interaction.customId;
   const prevEmbed = interaction.message.embeds[0];
@@ -15,7 +13,7 @@ export async function doneUsageReply(interaction) {
   )?.value;
 
   if (
-    oldState === "🔴 Em teste" &&
+    (oldState === "🔴 Em teste" || '🟠 Em ambiente de homol, pronto para ser testado') &&
     (newStateId === "complete_test" || newStateId === "reschedule")
   ) {
     try {
