@@ -19,5 +19,5 @@ export async function onButtonInteraction(interaction) {
     updateEmbedHandler(interaction, { changeEnvironment: true });
   }
 
-  // await doneUsageReply(interaction);
+  await doneUsageReply(interaction);
 }
