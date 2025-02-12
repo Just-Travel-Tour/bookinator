@@ -16,7 +16,7 @@ export async function doneUsageReply(interaction) {
     oldState === "🔴 Em teste" &&
     (newStateId === "complete_test" || newStateId === "reschedule")
   ) {
-    await interaction.channel.send(
+    await interaction.reply(
       `📢 A atividade "${taskCode}" saiu de homologação ${environment}`
     );
   }
