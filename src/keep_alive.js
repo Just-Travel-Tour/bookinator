@@ -21,6 +21,13 @@ const requestHandler = (req, res) => {
     return
   }
 
+  if (path === '/ping' && method === 'GET') {
+    console.log("ping")
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Pong');
+    return
+  }
+
   console.log(`Received request for ${path} with method ${method}`);
   res.writeHead(404, { 'Content-Type': 'text/plain' });
   res.end('Not Found');
