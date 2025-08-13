@@ -21,4 +21,8 @@ client.once(Events.ClientReady, onReady);
 
 client.on(Events.InteractionCreate, onInteraction);
 
+client.on(Events.Error, (error) => {
+  console.error("WebSocket error:", error);
+}); 
+
 client.login(process.env.DISCORD_TOKEN);
