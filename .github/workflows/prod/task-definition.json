@@ -1,0 +1,116 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "bookinator-prod",
+            "image": "547604019390.dkr.ecr.us-east-1.amazonaws.com/bookinator:v0",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "bookinator-prod",
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "PORT",
+                    "value": "8080"
+                }
+            ],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [
+                {
+                    "name": "DISCORD_TOKEN",
+                    "valueFrom": "/ecs/bookinator/prod/discord_token"
+                },
+                {
+                    "name": "CLIENT_ID",
+                    "valueFrom": "/ecs/bookinator/prod/client_id"
+                },
+                {
+                    "name": "GUILD_ID",
+                    "valueFrom": "/ecs/bookinator/prod/guild_id"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/bookinator-prod",
+                    "awslogs-create-group": "true",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "bookinator-prod",
+    "taskRoleArn": "arn:aws:iam::547604019390:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::547604019390:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "volumes": [],
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "ecs.capability.secrets.ssm.environment-variables"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "512",
+    "memory": "2048",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "tags": [
+        {
+            "key": "Environment",
+            "value": "prod"
+        },
+        {
+            "key": "ManagedBy",
+            "value": "Manual"
+        },
+        {
+            "key": "Name",
+            "value": "bookinator-prod"
+        }
+    ]
+}
