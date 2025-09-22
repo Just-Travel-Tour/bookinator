@@ -28,19 +28,6 @@
                     "valueFrom": "/ecs/bookinator/prod/discord_token"
                 },
                 {
-                    "name": "CLIENT_ID",
-                    "valueFrom": "/ecs/bookinator/prod/client_id"
-                },
-                {
-                    "name": "GUILD_ID",
-                    "valueFrom": "/ecs/bookinator/prod/guild_id"
-                },
-                {
-                    "name": "DISCORD_TOKEN",
-                    "valueFrom": "/ecs/bookinator/prod/discord_token"
-                }
-                ,
-                {
                     "name": "PROJECT_PREFIXES",
                     "valueFrom": "/ecs/bookinator/prod/project_prefixes"
                 },
