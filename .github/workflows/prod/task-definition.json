@@ -1,0 +1,80 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "bookinator-prod",
+            "image": "547604019390.dkr.ecr.us-east-1.amazonaws.com/bookinator:8bde02933eb02753d240c3903429f82551eb7567",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "bookinator-prod",
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "PORT",
+                    "value": "8080"
+                }
+            ],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [
+                {
+                    "name": "DISCORD_TOKEN",
+                    "valueFrom": "/ecs/bookinator/prod/discord_token"
+                },
+                {
+                    "name": "PROJECT_PREFIXES",
+                    "valueFrom": "/ecs/bookinator/prod/project_prefixes"
+                },
+                {
+                    "name": "TASK_LINK_PREFIX",
+                    "valueFrom": "/ecs/bookinator/prod/task_link_prefix"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/bookinator-prod",
+                    "awslogs-create-group": "true",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "bookinator-prod",
+    "taskRoleArn": "arn:aws:iam::547604019390:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::547604019390:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "volumes": [],
+    "placementConstraints": [],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "512",
+    "memory": "2048",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "tags": [
+        {
+            "key": "Environment",
+            "value": "prod"
+        },
+        {
+            "key": "ManagedBy",
+            "value": "Manual"
+        },
+        {
+            "key": "Name",
+            "value": "bookinator-prod"
+        }
+    ]
+}
