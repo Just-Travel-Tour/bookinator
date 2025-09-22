@@ -17,17 +17,10 @@ env:
   CONTAINER_NAME: bookinator-prod
   ENVIRONMENT: prod
   DOCKERFILE_PATH: Dockerfile
-  #IMAGE_BASE_DOCKERFILE_PATH: Dockerfile-build-rapido
-  #WEB_BASE_DOCKERFILE_PATH: Dockerfile-web
-  #WORKER_BASE_DOCKERFILE_PATH: Dockerfile-worker
-  #WORKER_TASK_DEF: .github/workflows/prod/task-definition-worker.json
-  #WORKER_CONTAINER_NAME: iris-prod-worker
-  #WORKER_SERVICE: iris-prod-worker
 
 jobs:
 
   build:
-    #needs: build-base-image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -44,7 +37,7 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build and push web image
+      - name: Build and push image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
