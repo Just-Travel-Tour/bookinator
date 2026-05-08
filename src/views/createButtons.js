@@ -3,11 +3,6 @@ import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
 export function createButtons() {
   const row = new ActionRowBuilder().addComponents(
     new ButtonBuilder()
-      .setCustomId("change_environment")
-      .setEmoji("🔁")
-      .setLabel("Trocar ambiente")
-      .setStyle(ButtonStyle.Secondary),
-    new ButtonBuilder()
       .setCustomId("deploy_test")
       .setEmoji("⬆")
       .setLabel("Em homol")
