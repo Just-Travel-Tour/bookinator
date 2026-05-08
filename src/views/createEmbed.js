@@ -30,12 +30,6 @@ export function createEmbed({
 
   embed.addFields({ name: "Estado", value: stateLabel, inline: true });
 
-  embed.addFields({
-    name: "Ambiente",
-    value: environmentToEmoji(environment),
-    inline: true,
-  });
-
   if (taskLink) {
     embed.addFields({
       name: "Link(s) da atividade",
